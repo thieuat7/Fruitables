@@ -24,7 +24,7 @@
                     <div class="col-11 mx-auto">
                         <div class="d-flex justify-content-between">
                             <h3>Table User</h3>
-                            <a href="/admin/users/create" class="btn btn-primary">Create a User</a>
+                            <a href="/admin/products/create" class="btn btn-primary">Create a Product</a>
                         </div>
                         <hr />
                         <!-- Bảng hiển thị danh sách người dùng -->
@@ -32,24 +32,27 @@
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Role description</th>
-                                    <th scope="col">Role</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Factory</th>
+                                    <th scope="col">Type</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($products as $product)
                                 <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->user_email }}</td>
-                                    <td>{{ $user->role->role_description }}</td>
-                                    <td>{{ $user->role->role_name }}</td>
+                                    <td>{{ $product->id }}</td>
+                                    <td>{{ $product->product_name }}</td>
+                                    <td>{{ $product->product_price }}</td>
+                                    <td>{{ $product->product_factory }}</td>
+                                    <td>{{ $product->product_type }}</td>
                                     <td>
-                                        <a href="{{ url('/admin/user/' . $user->id) }}" class="btn btn-success">View</a>
-                                        <a href="{{ url('/admin/user/update/' . $user->id) }}"
+                                        <a href="{{ url('/admin/product/' . $product->id) }}"
+                                            class="btn btn-success">View</a>
+                                        <a href="{{ url('/admin/product/update/' . $product->id) }}"
                                             class="btn btn-warning mx-2">Update</a>
-                                        <a href="{{ url('/admin/user/delete/' . $user->id) }}"
+                                        <a href="{{ url('/admin/product/delete/' . $product->id) }}"
                                             class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
@@ -57,15 +60,22 @@
                             </tbody>
                         </table>
 
+
                     </div>
                 </div>
+
                 <div class="d-flex justify-content-center">
-                    {{ $users->links('pagination::bootstrap-4') }}
+                    {{ $products->links('pagination::bootstrap-4') }}
                 </div>
+
             </div>
+
+
 
             @extends('admin.layout.footer')
         </div>
+
+
 
 
     </div>

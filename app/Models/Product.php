@@ -9,7 +9,16 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['product_name', 'product_detailDesc', 'product_shortDesc', 'product_price', 'product_factory', 'product_target', 'product_type', 'product_quantity', 'product_image_url'];
+    protected $fillable = [
+        'product_name',
+        'product_detailDesc',
+        'product_shortDesc',
+        'product_price',
+        'product_factory',
+        'product_target',
+        'product_type',
+        'product_quantity',
+        'product_image_url'];
 
     public function discounts()
     {
