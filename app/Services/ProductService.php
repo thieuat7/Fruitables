@@ -11,7 +11,7 @@ class ProductService
 {
 
 
-    public function getAllProduct($perPage = 10)
+    public function getAllProduct($perPage = 8)
     {
         return Product::paginate($perPage);
     }
