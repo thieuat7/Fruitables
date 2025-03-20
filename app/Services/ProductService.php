@@ -16,6 +16,16 @@ class ProductService
         return Product::paginate($perPage);
     }
 
+    public function getAllProductShowPage($perPage = 9)
+    {
+        return Product::paginate($perPage);
+    }
+
+    public function getAllProducts()
+    {
+        return Product::all();
+    }
+
     public function getProductById($id)
     {
         return Product::find($id);
@@ -105,6 +115,69 @@ class ProductService
         ]);
 
         return $product;
+    }
+
+
+    public function filterProducts($filters, $perPage = 9)
+    {
+        $query = Product::query();
+
+        // Lọc theo tên sản phẩm (search)
+        if (!empty($filters['searchValue'])) {
+            $query->where('product_name', 'like', '%' . $filters['searchValue'] . '%');
+        }
+
+        // Lọc theo hãng sản xuất
+        if (!empty($filters['factory'])) {
+            $query->whereIn('product_factory', $filters['factory']);
+        }
+
+        // Lọc theo loại trái cây
+        if (!empty($filters['type'])) {
+            $query->whereIn('product_type', $filters['type']);
+        }
+
+        // Lọc theo mức giá
+        if (!empty($filters['price'])) {
+            $query->where(function ($q) use ($filters) {
+                foreach ($filters['price'] as $range) {
+                    switch ($range) {
+                        case 'duoi-100-nghin':
+                            $q->orWhere('product_price', '<', 100000);
+                            break;
+                        case '100-500-nghin':
+                            $q->orWhereBetween('product_price', [100000, 500000]);
+                            break;
+                        case '500-2000-nghin':
+                            $q->orWhereBetween('product_price', [500000, 2000000]);
+                            break;
+                        case 'tren-2-trieu':
+                            $q->orWhere('product_price', '>', 2000000);
+                            break;
+                    }
+                }
+            });
+        }
+
+        // Lọc theo đánh giá
+        if (!empty($filters['valueStar'])) {
+            $query->where('valueStar', '>=', $filters['valueStar']);
+        }
+
+        // Sắp xếp
+        if (!empty($filters['sort'])) {
+            switch ($filters['sort']) {
+                case 'gia-tang-dan':
+                    $query->orderBy('product_price', 'asc');
+                    break;
+                case 'gia-giam-dan':
+                    $query->orderBy('product_price', 'desc');
+                    break;
+            }
+        }
+
+        // Phân trang với số sản phẩm mỗi trang
+        return $query->paginate($perPage);
     }
 
 }

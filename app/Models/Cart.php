@@ -11,6 +11,8 @@ class Cart extends Model
 
     protected $fillable = ['cart_sum', 'user_id'];
 
+      public $timestamps = true; // Thêm dòng này
+
     public function user()
     {
         return $this->belongsTo(User::class);

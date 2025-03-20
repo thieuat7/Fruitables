@@ -11,6 +11,8 @@ class CartDetail extends Model
 
     protected $fillable = ['cartDetails_checkbox', 'cartDetails_quantity', 'product_id', 'cart_id'];
 
+      public $timestamps = true; // Thêm dòng này
+
     public function cart()
     {
         return $this->belongsTo(Cart::class);

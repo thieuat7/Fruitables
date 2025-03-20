@@ -16,8 +16,11 @@ class HomePageController extends Controller{
     public function getHomePage(){
 
         $products = $this->productService->getAllProduct();
-
-        return view("client.homePage.homePage", compact('products'), );
+        $allproduct = $this->productService->getAllProducts();
+        return view("client.homePage.homePage", compact('products','allproduct'), );
     }
 
+    public function errorHomePage(){
+        return view("client.auth.error");
+    }
 }

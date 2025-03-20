@@ -16,6 +16,8 @@ class ProductController extends Controller{
         return view('admin.products.show', compact('products'));
     }
 
+    
+
     // Hiển thị form tạo sản phẩm
     public function createProduct()
     {
@@ -31,6 +33,19 @@ class ProductController extends Controller{
         }
         return view('admin.products.detail', compact('product'));
     }
+
+    public function getProductDetailPage($id){
+        $product = $this->productService->getProductById($id);
+        $allproduct= $this->productService->getAllProducts();
+        return view('client.product.detail', compact('product','allproduct'));
+    }
+
+
+    public function getProductShowPage(){
+        $allproduct= $this->productService->getAllProductShowPage();
+        return view('client.product.show', compact('allproduct',));
+    }
+
 
     // Xử lý tạo sản phẩm
     public function handleCreateProduct(Request $request)
@@ -107,5 +122,27 @@ class ProductController extends Controller{
         $this->productService->deleteByProduct($id);
 
         return redirect('/admin/product')->with('success', 'Product deleted successfully!');
+    }
+
+    public function filterProducts(Request $request)
+    {
+        $filters = [
+        'searchValue' => $request->input('searchValue'),
+        'factory' => $request->has('factory') ? explode(',', $request->input('factory')) : [],
+        'type' => $request->has('type') ? explode(',', $request->input('type')) : [],
+        'price' => $request->has('price') ? explode(',', $request->input('price')) : [],
+        'valueStar' => $request->input('valueStar'),
+        'sort' => $request->input('sort'),
+    ];
+
+        $perPage = $request->input('per_page', 9); // Số sản phẩm mỗi trang
+
+        $products = $this->productService->filterProducts($filters, $perPage);
+
+         if ($request->ajax()) {
+        return view('client.product.show', compact('products'))->render();
+    }
+
+        return view('client.product.show', compact('products'));
     }
 }

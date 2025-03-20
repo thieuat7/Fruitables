@@ -104,7 +104,7 @@ return new class extends Migration
         });
 
         // Cart Table
-        Schema::create('cart', function (Blueprint $table) {
+        Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->integer('cart_sum')->nullable();
             $table->foreignId('user_id')->constrained('users');
@@ -129,6 +129,8 @@ return new class extends Migration
             $table->text('comment')->nullable();
             $table->timestamps();
         });
+
+        
     }
 
     /**

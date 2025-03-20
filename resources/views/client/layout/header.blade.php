@@ -18,7 +18,7 @@
         </div>
         <div class="container px-0">
             <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                <a href="index.html" class="navbar-brand">
+                <a href="/" class="navbar-brand">
                     <h1 class="text-primary display-6">Fruitables</h1>
                 </a>
                 <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse"
@@ -27,9 +27,8 @@
                 </button>
                 <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                     <div class="navbar-nav mx-auto">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="shop.html" class="nav-item nav-link">Shop</a>
-                        <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a>
+                        <a href="/" class="nav-item nav-link active">Home</a>
+                        <a href="/product" class="nav-item nav-link">Shop</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0 bg-secondary rounded-0">
@@ -42,20 +41,70 @@
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="d-flex m-3 me-0">
-                        <button
-                            class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-                            data-bs-toggle="modal" data-bs-target="#searchModal"><i
-                                class="fas fa-search text-primary"></i></button>
-                        <a href="#" class="position-relative me-4 my-auto">
-                            <i class="fa fa-shopping-bag fa-2x"></i>
-                            <span
-                                class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-                                style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+                        @if(auth()->check())
+                        <!-- Nếu đã đăng nhập -->
+                        <div class="dropdown my-auto dropdown-hover me-4">
+                            <a href="#" class="position-relative" role="button" id="notificationDropdown"
+                                aria-expanded="false">
+                                <i class="fas fa-bell fa-2x"></i>
+                                <!-- Số lượng thông báo -->
+                                <span
+                                    class="position-absolute bg-danger rounded-circle d-flex align-items-center justify-content-center text-white px-1"
+                                    style="top: -5px; right: -5px; height: 20px; min-width: 20px;">
+                                    3
+                                </span>
+                            </a>
+                        </div>
+                        <div class="dropdown my-auto dropdown-hover me-4">
+                            <a href="/cart" class="position-relative" role="button" id="cartDropdown"
+                                aria-expanded="false">
+                                <i class="fas fa-shopping-cart fa-2x"></i>
+                                <!-- Số lượng sản phẩm trong giỏ hàng -->
+                                <span
+                                    class="position-absolute bg-danger rounded-circle d-flex align-items-center justify-content-center text-white px-1"
+                                    style="top: -5px; right: -5px; height: 20px; min-width: 20px;">
+                                    5
+                                </span>
+                            </a>
+                        </div>
+
+                        <!-- Icon người dùng -->
+                        <div class="dropdown my-auto dropdown-hover">
+                            <a href="#" class="position-relative me-4 my-auto" role="button" id="dropdownMenuLink"
+                                aria-expanded="false" data-bs-toggle="dropdown">
+                                <i class="fas fa-user fa-2x"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end p-4" aria-labelledby="dropdownMenuLink">
+                                <li class="d-flex align-items-center flex-column" style="min-width: 300px;">
+                                    <img loading="lazy" style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; display: flex;
+                justify-content: center; align-items: center; object-fit: cover;"
+                                        src="{{ asset('storage/avatars/' . auth()->user()->user_avatar) }}" />
+                                    <div class="text-center my-3">
+                                        {{ auth()->user()->user_name }}
+                                    </div>
+                                </li>
+                                <li><a class="dropdown-item" href="/user-profile">Quản lý tài khoản</a></li>
+                                <li><a class="dropdown-item" href="/order-history">Lịch sử mua hàng</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <form method="POST" action="/logout">
+                                        @csrf
+                                        <button class="dropdown-item">Đăng xuất</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                        @else
+                        <!-- Nếu chưa đăng nhập -->
+                        <a href="/login" class="my-auto text-decoration-none">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Đăng nhập
                         </a>
-                        <a href="#" class="my-auto">
-                            <i class="fas fa-user fa-2x"></i>
-                        </a>
+                        @endif
                     </div>
+
                 </div>
             </nav>
         </div>
