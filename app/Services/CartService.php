@@ -81,7 +81,7 @@ class CartService
             $cd->save();
 
             // Tính tổng tiền
-            $totalPrice += $cd->price * $cd->cartDetails_quantity;
+            $totalPrice += $cd->product->product_price * $cd->cartDetails_quantity;
         }
 
         return [
