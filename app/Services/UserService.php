@@ -29,9 +29,11 @@ class UserService
             if ($user->user_avatar) {
                 // Kiểm tra nếu đường dẫn avatar có chứa thư mục 'avatars'
                 $avatarPath = 'avatars/' . $user->user_avatar;
-                if (Storage::disk('public')->exists($avatarPath)) {
-                    // Xóa avatar cũ
-                    Storage::disk('public')->delete($avatarPath);
+                if($user->user_avatar != "default-google.png" || $user->user_avatar != "default-avatar.jpg"){
+                    if (Storage::disk('public')->exists($avatarPath)) {
+                        // Xóa avatar cũ
+                        Storage::disk('public')->delete($avatarPath);
+                    }
                 }
             }
 
