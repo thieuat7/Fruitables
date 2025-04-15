@@ -13,7 +13,6 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         User
                     </a>
-
                     <a class="nav-link" href="/admin/product">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Product
@@ -23,7 +22,10 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Order
                     </a>
-
+                    <a class="nav-link" href="/admin/discount">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Discount
+                    </a>
                 </div>
             </div>
             <div class="sb-sidenav-footer">

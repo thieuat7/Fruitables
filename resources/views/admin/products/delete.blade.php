@@ -30,7 +30,7 @@
         @extends('admin.layout.sidebar')
         <div id="layoutSidenav_content">
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Manage User</h1>
+                <h1 class="mt-4">Manage Product</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active"><a href="/admin">Dashboard</a></li>
                     <li class="breadcrumb-item active"><a href="/admin/product">Product</a></li>

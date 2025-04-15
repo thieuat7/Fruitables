@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-11 mx-auto">
                         <div class="d-flex justify-content-between">
-                            <h3>Table User</h3>
+                            <h3>Table Product</h3>
                             <a href="/admin/products/create" class="btn btn-primary">Create a Product</a>
                         </div>
                         <hr />

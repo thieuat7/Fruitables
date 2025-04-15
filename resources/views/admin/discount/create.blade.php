@@ -30,24 +30,30 @@
         @extends('admin.layout.sidebar')
         <div id="layoutSidenav_content">
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Manage Product</h1>
+                <h1 class="mt-4">Manage Discount</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active"><a href="/admin">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="/admin/user">Product</a></li>
+                    <li class="breadcrumb-item active"><a href="/admin/discount">Discount</a></li>
                     <li class="breadcrumb-item active">Create</li>
                 </ol>
                 <div class=" mt-5">
                     <div class="row">
                         <div class="col-md-6 col-12 mx-auto">
-                            <h3>Create a Product</h3>
+                            <h3>Update a Product</h3>
                             <hr />
-                            <form method="post" action="/admin/product/create" enctype="multipart/form-data"
-                                class="row g-3 p-3">
+                            @if(is_null($product))
+                            <div class="alert alert-danger">
+                                Không tìm thấy sản phẩm hoặc đã xảy ra lỗi.
+                            </div>
+                            @else
+                            <form method="post" action="/admin/discount/create/{{$product->id}}"
+                                enctype="multipart/form-data" class="row g-3 p-3">
                                 @csrf
                                 <div class="col-md-12">
                                     <label for="product_name" class="form-label">Product Name:</label>
                                     <input type="text" class="form-control @error('product_name') is-invalid @enderror"
-                                        id="product_name" name="product_name" placeholder="Enter product name">
+                                        id="product_name" name="product_name" placeholder="Enter product name"
+                                        value="{{ $product->product_name }}" disabled>
                                     @error('product_name')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -58,85 +64,105 @@
                                     <input type="text"
                                         class="form-control @error('product_shortDesc') is-invalid @enderror"
                                         id="product_shortDesc" name="product_shortDesc"
-                                        placeholder="Enter short description">
+                                        placeholder="Enter short description" value="{{ $product->product_shortDesc }}"
+                                        disabled>
                                     @error('product_shortDesc')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
-                                <div class="col-md-12">
-                                    <label for="product_detailDesc" class="form-label">Detailed Description:</label>
-                                    <textarea class="form-control @error('product_detailDesc') is-invalid @enderror"
-                                        id="product_detailDesc" name="product_detailDesc"
-                                        placeholder="Enter detailed description"></textarea>
-                                    @error('product_detailDesc')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
 
                                 <div class="col-md-6">
                                     <label for="product_price" class="form-label">Price:</label>
                                     <input type="number"
                                         class="form-control @error('product_price') is-invalid @enderror"
-                                        id="product_price" name="product_price" placeholder="Enter price">
+                                        id="product_price" name="product_price" placeholder="Enter price"
+                                        value="{{ $product->product_price }}" disabled>
                                     @error('product_price')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
-                                <div class="col-md-6">
-                                    <label for="product_quantity" class="form-label">Quantity:</label>
-                                    <input type="number"
-                                        class="form-control @error('product_quantity') is-invalid @enderror"
-                                        id="product_quantity" name="product_quantity" placeholder="Enter quantity">
-                                    @error('product_quantity')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label for="product_factory" class="form-label">Factory:</label>
-                                    <input type="text"
-                                        class="form-control @error('product_factory') is-invalid @enderror"
-                                        id="product_factory" name="product_factory" placeholder="Enter factory name">
-                                    @error('product_factory')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
 
                                 <div class="col-md-6">
                                     <label for="product_type" class="form-label">Type:</label>
                                     <input type="text" class="form-control @error('product_type') is-invalid @enderror"
-                                        id="product_type" name="product_type" placeholder="Enter product type">
+                                        id="product_type" name="product_type" placeholder="Enter product type"
+                                        value="{{ $product->product_type }}" disabled>
                                     @error('product_type')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
-                                <div class="col-md-12">
-                                    <label for="product_target" class="form-label">Target Audience:</label>
-                                    <input type="text"
-                                        class="form-control @error('product_target') is-invalid @enderror"
-                                        id="product_target" name="product_target" placeholder="Enter target audience">
-                                    @error('product_target')
+                                <div class="col-md-6">
+                                    <label for="discount_percent" class="form-label">Discount Percent (%):</label>
+                                    <input type="number"
+                                        class="form-control @error('discount_percent') is-invalid @enderror"
+                                        id="discount_percent" name="discount_percent"
+                                        placeholder="Enter discount percent"
+                                        value="{{ old('discount_percent', optional($product->discount)->discount_percent) }}"
+                                        min="1" max="100">
+                                    @error('discount_percent')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
-                                <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <label for="status" class="form-label">Status:</label>
+                                    <select class="form-select @error('status') is-invalid @enderror" id="status"
+                                        name="status">
+                                        <option value="1">Active
+                                        </option>
+                                        <option value="0">Inactive
+                                        </option>
+                                    </select>
+                                    @error('status')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="start_date" class="form-label">Start Date:</label>
+                                    <input type="date" class="form-control @error('start_date') is-invalid @enderror"
+                                        id="start_date" name="start_date"
+                                        value="{{ old('start_date', optional($product->discount)->start_date) }}">
+                                    @error('start_date')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="end_date" class="form-label">End Date:</label>
+                                    <input type="date" class="form-control @error('end_date') is-invalid @enderror"
+                                        id="end_date" name="end_date"
+                                        value="{{ old('end_date', optional($product->discount)->end_date) }}">
+                                    @error('end_date')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+
+
+                                <div class="col-md-6">
                                     <label for="productImageFile" class="form-label">Product Image:</label>
                                     <input class="form-control" type="file" id="productImageFile"
-                                        name="product_image_url" accept=".png, .jpg, .jpeg">
+                                        name="product_image_url" accept=".png, .jpg, .jpeg" disabled>
                                 </div>
                                 <div class="col-12 mt-3 text-center">
-                                    <img id="productImagePreview" src="" alt="Product Image Preview"
-                                        style="display: none; max-width: 100%; max-height: 400px; border-radius: 8px;">
+                                    @if($product->product_image_url)
+                                    <img id="productImagePreview"
+                                        src="{{ asset('storage/products/' . $product->product_image_url) }}"
+                                        alt="Product Image Preview"
+                                        style="display: block; max-width: 100%; max-height: 400px; border-radius: 8px; margin-top: 10px;">
+                                    @endif
                                 </div>
+
 
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">Create</button>
                                 </div>
                             </form>
+                            @endif
                         </div>
                     </div>
                 </div>

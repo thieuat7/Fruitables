@@ -18,7 +18,8 @@ class Product extends Model
         'product_target',
         'product_type',
         'product_quantity',
-        'product_image_url'];
+        'product_image_url',
+        'star'];
 
     public function discounts()
     {
