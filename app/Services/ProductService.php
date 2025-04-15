@@ -184,7 +184,7 @@ class ProductService
         }
 
         // Phân trang với số sản phẩm mỗi trang
-        return $query->paginate($perPage);
+        return $query->paginate($perPage)->appends($filters);
     }
 
 
@@ -209,5 +209,4 @@ class ProductService
             'comment' => $comment,
         ]);
     }
-
 }
