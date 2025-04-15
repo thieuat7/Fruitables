@@ -97,3 +97,7 @@ Route::get('/checkout', [CartController::class, 'getCheckOutPage'])->name('check
 Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('placeOrder');
 
 Route::get('/thank', [OrderController::class, 'thank'])->name('thank');
+
+
+//comment
+Route::post('/confirm-comment', [ProductController::class, 'postConfirmComment'])->name('comment.confirm');

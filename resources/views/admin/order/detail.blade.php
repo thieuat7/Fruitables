@@ -30,7 +30,11 @@
                             <li class="breadcrumb-item active">View</li>
                         </ol>
 
-
+                        @if(is_null($orders))
+                        <div class="alert alert-danger">
+                            Không tìm thấy sản phẩm hoặc đã xảy ra lỗi.
+                        </div>
+                        @else
                         <!-- Bảng hiển thị danh sách người dùng -->
                         <table class="table table-bordered table-hover">
                             <thead>
@@ -82,6 +86,7 @@
 
                             </tbody>
                         </table>
+                        @endif
                         <a href="/admin/order" class="btn btn-success mt-3">Back</a>
                     </div>
                 </div>

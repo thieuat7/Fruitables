@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Services\UserService;
 use Illuminate\Http\Request;
+
+
 class UserController extends Controller
 {
     private $userService;
@@ -25,11 +27,15 @@ class UserController extends Controller
     }
 
     public function detailUser($id){
-        $user=$this->userService->getUserById($id);
-        if(!$user){
-            return null;
+        try {
+            $user=$this->userService->getUserById($id);
+            if(!$user){
+                return view('admin.users.detail', ['user' => null]);
+            }
+            return view('admin.users.detail', compact('user'));
+        } catch (\Throwable $th) {
+            return view('admin.users.detail', ['user' => null]);
         }
-        return view('admin.users.detail', compact('user'));
     }
 
     public function handleCreateUser(Request $request)
@@ -53,24 +59,34 @@ class UserController extends Controller
     // Hiển thị form chỉnh sửa
     public function updateUser($id)
     {
-        $user = $this->userService->getUserById($id);
+        try {
+            $user = $this->userService->getUserById($id);
 
-        if (!$user) {
-            return redirect()->back()->with('error', 'User not found!');
+            if (!$user) {
+                return view('admin.users.update', ['user' => null]);
+            }
+
+            return view('admin.users.update', compact('user'));
+        } catch (\Throwable $th) {
+            return view('admin.users.update', ['user' => null]);
         }
 
-        return view('admin.users.update', compact('user'));
     }
 
     public function deleteUser($id)
     {
-        $user = $this->userService->getUserById($id);
+        try {
+            $user = $this->userService->getUserById($id);
 
-        if (!$user) {
-            return redirect()->back()->with('error', 'User not found!');
+            if (!$user) {
+                return view('admin.users.delete', ['user' => null]);
+            }
+
+            return view('admin.users.delete', compact('user'));
+        } catch (\Throwable $th) {
+            return view('admin.users.delete', ['user' => null]);
         }
 
-        return view('admin.users.delete', compact('user'));
     }
 
     // Xử lý cập nhật

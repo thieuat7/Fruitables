@@ -132,97 +132,129 @@
                                 </div>
                             </nav>
                             <div class="tab-content mb-5">
-
                                 <div class="tab-pane" id="nav-mission" role="tabpanel"
                                     aria-labelledby="nav-mission-tab">
+                                    @foreach ($reviews as $review)
                                     <div class="d-flex">
-                                        <img src="../img/avatar.jpg" class="img-fluid rounded-circle p-3"
-                                            style="width: 100px; height: 100px;" alt="">
+                                        <img src="{{ asset('storage/avatars/' . $review->user->user_avatar) }}"
+                                            class="img-fluid rounded-circle p-3"
+                                            style="width: 100px; height: 100px; object-fit: cover;" alt="" o>
                                         <div class="">
-                                            <p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
+                                            <p class="mb-2" style="font-size: 14px;">cảm ơn bình luận của bạn</p>
                                             <div class="d-flex justify-content-between">
-                                                <h5>Jason Smith</h5>
-                                                <div class="d-flex mb-3">
+                                                <h5 style="margin-right: 5px;">{{ $review->user->user_name }}</h5>
+                                                @if($review->rating==1){
+                                                <label class="form-check-label" for="sort-1"><i
+                                                        class="fa fa-star text-secondary"></i>
+                                                </label>
+                                                }@elseif($review->rating==2){
+                                                <label class="form-check-label" for="sort-2">
+                                                    <i class="fa fa-star text-secondary"></i>
+                                                    <i class="fa fa-star text-secondary"></i>
+                                                </label>
+                                                }
+                                                @elseif($review->rating==3){
+                                                <label class="form-check-label" for="sort-3">
+                                                    <i class="fa fa-star text-secondary"></i>
+                                                    <i class="fa fa-star text-secondary"></i>
+                                                    <i class="fa fa-star text-secondary"></i>
+
+                                                </label>
+                                                }
+                                                @elseif($review->rating==4){
+                                                <label class="form-check-label" for="sort-4">
                                                     <i class="fa fa-star text-secondary"></i>
                                                     <i class="fa fa-star text-secondary"></i>
                                                     <i class="fa fa-star text-secondary"></i>
                                                     <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
+
+                                                </label>
+
+                                                }@else
+                                                <label class="form-check-label" for="sort-5">
+                                                    <i class="fa fa-star text-secondary"></i>
+                                                    <i class="fa fa-star text-secondary"></i>
+                                                    <i class="fa fa-star text-secondary"></i>
+                                                    <i class="fa fa-star text-secondary"></i>
+                                                    <i class="fa fa-star text-secondary"></i>
+
+                                                </label>
+                                                @endif
                                             </div>
-                                            <p>The generated Lorem Ipsum is therefore always free from repetition
-                                                injected humour, or non-characteristic
-                                                words etc. Susp endisse ultricies nisi vel quam suscipit </p>
+                                            <p class="text-dark">{{ $review->comment }} </p>
                                         </div>
                                     </div>
-                                    <div class="d-flex">
-                                        <img src="../img/avatar.jpg" class="img-fluid rounded-circle p-3"
-                                            style="width: 100px; height: 100px;" alt="">
-                                        <div class="">
-                                            <p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
-                                            <div class="d-flex justify-content-between">
-                                                <h5>Sam Peters</h5>
-                                                <div class="d-flex mb-3">
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p class="text-dark">The generated Lorem Ipsum is therefore always free from
-                                                repetition injected humour, or non-characteristic
-                                                words etc. Susp endisse ultricies nisi vel quam suscipit </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="nav-vision" role="tabpanel">
-                                    <p class="text-dark">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et
-                                        tempor sit. Aliqu diam
-                                        amet diam et eos labore. 3</p>
-                                    <p class="mb-0">Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos
-                                        labore.
-                                        Clita erat ipsum et lorem et sit</p>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
-                        <form action="#">
-                            <h4 class="mb-5 fw-bold">Leave a Reply</h4>
+                        <form method="post" action="/confirm-comment">
+                            @csrf
+                            <h4 class="mb-4 fw-bold">Hãy để lại 1 bình luận</h4>
+                            <div class="col-lg-12 mb-4">
+                                <div class="mb-2"><b>Đánh giá</b></div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" id="sort-1" value="1" name="radio-sort">
+                                    <label class="form-check-label" for="sort-1"><i
+                                            class="fa fa-star text-secondary"></i>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" id="sort-2" value="2" name="radio-sort">
+                                    <label class="form-check-label" for="sort-2">
+                                        <i class="fa fa-star text-secondary"></i>
+                                        <i class="fa fa-star text-secondary"></i>
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" id="sort-3" value="3" name="radio-sort">
+                                    <label class="form-check-label" for="sort-3">
+                                        <i class="fa fa-star text-secondary"></i>
+                                        <i class="fa fa-star text-secondary"></i>
+                                        <i class="fa fa-star text-secondary"></i>
+
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" id="sort-4" value="4" name="radio-sort">
+                                    <label class="form-check-label" for="sort-4">
+                                        <i class="fa fa-star text-secondary"></i>
+                                        <i class="fa fa-star text-secondary"></i>
+                                        <i class="fa fa-star text-secondary"></i>
+                                        <i class="fa fa-star text-secondary"></i>
+
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" id="sort-5" checked value="5" name="radio-sort">
+                                    <label class="form-check-label" for="sort-5">
+                                        <i class="fa fa-star text-secondary"></i>
+                                        <i class="fa fa-star text-secondary"></i>
+                                        <i class="fa fa-star text-secondary"></i>
+                                        <i class="fa fa-star text-secondary"></i>
+                                        <i class="fa fa-star text-secondary"></i>
+
+                                    </label>
+                                </div>
+
+                                <input style="display: none;" type="hidden" name="rating" id="rating-hidden" value="5">
+                            </div>
                             <div class="row g-4">
-                                <div class="col-lg-6">
-                                    <div class="border-bottom rounded">
-                                        <input type="text" class="form-control border-0 me-4" placeholder="Yur Name *">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="border-bottom rounded">
-                                        <input type="email" class="form-control border-0" placeholder="Your Email *">
-                                    </div>
-                                </div>
                                 <div class="col-lg-12">
                                     <div class="border-bottom rounded my-4">
-                                        <textarea name="" id="" class="form-control border-0" cols="30" rows="8"
-                                            placeholder="Your Review *" spellcheck="false"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="d-flex justify-content-between py-3 mb-5">
-                                        <div class="d-flex align-items-center">
-                                            <p class="mb-0 me-3">Please rate:</p>
-                                            <div class="d-flex align-items-center" style="font-size: 12px;">
-                                                <i class="fa fa-star text-muted"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <a href="#"
-                                            class="btn border border-secondary text-primary rounded-pill px-4 py-3">
-                                            Post Comment</a>
+                                        <textarea name="description" class="form-control border-0" cols="30" rows="2"
+                                            placeholder="Miêu tả của bạn *" required spellcheck="false"></textarea>
                                     </div>
                                 </div>
                             </div>
+                            <div style="display: none;">
+                                <input class="form-check-input" value="{{ $product->id }}" name="id">
+                            </div>
+                            <button type="submit" style="width: 200px;"
+                                class="btn border border-secondary text-primary rounded-pill px-4 py-3">
+                                Đăng bình luận
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -420,6 +452,20 @@
     <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>
+    <script>
+    $(document).ready(function() {
+        $('form').on('submit', function(e) {
+            // Lấy giá trị radio được chọn
+            let rating = $('input[name="radio-sort"]:checked').val();
+
+            // Gán vào input hidden
+            $('#rating-hidden').val(rating);
+
+            // (Tùy chọn) Debug thử
+            console.log("Đánh giá được chọn là: " + rating);
+        });
+    });
+    </script>
 </body>
 
 </html>

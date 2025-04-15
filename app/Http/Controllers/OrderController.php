@@ -31,13 +31,28 @@ class OrderController extends Controller
 
 
     public function detailOrder($id){
-        $orders = $this->orderService->getOrderById($id);
-        return view('admin.order.detail', compact('orders'));
+        try {
+            $orders = $this->orderService->getOrderById($id);
+            if(!$orders){
+                return view('admin.order.detail', ['orders'=>null]);
+            }
+            return view('admin.order.detail', compact('orders'));
+        } catch (\Throwable $th) {
+            return view('admin.order.detail', ['orders'=>null]);
+        }
     }
 
     public function updateOrder($id){
-        $orders = $this->orderService->getOrderById($id);
-        return view('admin.order.update', compact('orders'));
+        try {
+            $orders = $this->orderService->getOrderById($id);
+            if(!$orders){
+                return view('admin.order.update', ['orders'=>null]);
+            }
+            return view('admin.order.update', compact('orders'));
+        } catch (\Throwable $th) {
+            return view('admin.order.update', ['orders'=>null]);
+        }
+        
     }
 
     public function handleUpdateOrder(Request $request, $id){

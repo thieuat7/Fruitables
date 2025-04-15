@@ -29,7 +29,11 @@
                             <li class="breadcrumb-item active"><a href="/admin/order">Order</a></li>
                             <li class="breadcrumb-item active">Update</li>
                         </ol>
-
+                        @if(is_null($orders))
+                        <div class="alert alert-danger">
+                            Không tìm thấy sản phẩm hoặc đã xảy ra lỗi.
+                        </div>
+                        @else
 
                         <form method="post" action="/admin/order/update/{{$orders->id}}" enctype="multipart/form-data"
                             class="row g-3 p-3">
@@ -126,6 +130,7 @@
 
                             </tbody>
                         </table>
+                        @endif
                     </div>
                 </div>
 

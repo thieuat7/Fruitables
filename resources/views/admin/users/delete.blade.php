@@ -41,6 +41,11 @@
                         <div class="col-md-6 col-12 mx-auto">
                             <h3>Delete a User</h3>
                             <hr />
+                            @if(is_null($user))
+                            <div class="alert alert-danger">
+                                Không tìm thấy người dùng hoặc đã xảy ra lỗi.
+                            </div>
+                            @else
                             <div class="col-12 mx-auto">
                                 <div class="d-flex justify-content-between">
                                     <h3>Delete the user with id = {{ $user->id }}</h3>
@@ -60,6 +65,7 @@
                                     <button type="submit" class="btn btn-danger">Confirm</button>
                                 </form>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -27,17 +27,25 @@ class ProductController extends Controller{
     // Xem chi tiết sản phẩm
     public function detailProduct($id)
     {
-        $product = $this->productService->getProductById($id);
-        if (!$product) {
-            return redirect()->back()->with('error', 'Product not found!');
+        try {
+            $product = $this->productService->getProductById($id);
+            if (!$product) {
+                return view('admin.products.detail', ['product'=>null]);
+            }
+            return view('admin.products.detail', compact('product'));
+        } catch (\Throwable $th) {
+            return view('admin.products.detail', ['product'=>null]);
         }
-        return view('admin.products.detail', compact('product'));
+        
     }
+
+    
 
     public function getProductDetailPage($id){
         $product = $this->productService->getProductById($id);
+        $reviews = $this->productService->getReviewWithIDProduct($id);
         $allproduct= $this->productService->getAllProducts();
-        return view('client.product.detail', compact('product','allproduct'));
+        return view('client.product.detail', compact('product','allproduct','reviews' ));
     }
 
 
@@ -72,13 +80,18 @@ class ProductController extends Controller{
     // Hiển thị form chỉnh sửa sản phẩm
     public function updateProduct($id)
     {
-        $product = $this->productService->getProductById($id);
+        try {
+            $product = $this->productService->getProductById($id);
 
-        if (!$product) {
-            return redirect()->back()->with('error', 'Product not found!');
+            if (!$product) {
+                return view('admin.products.update', ['product'=>null]);
+            }
+
+            return view('admin.products.update', compact('product'));
+        } catch (\Throwable $th) {
+            return view('admin.products.update', ['product'=>null]);
         }
-
-        return view('admin.products.update', compact('product'));
+        
     }
 
     // Xử lý cập nhật sản phẩm
@@ -106,13 +119,18 @@ class ProductController extends Controller{
     // Xóa sản phẩm
     public function deleteProduct($id)
     {
-        $product = $this->productService->getProductById($id);
+        try {
+           $product = $this->productService->getProductById($id);
 
-        if (!$product) {
-            return redirect()->back()->with('error', 'Product not found!');
+            if (!$product) {
+                return view('admin.products.delete', ['product'=>null]);
+            }
+
+            return view('admin.products.delete', compact('product'));
+        } catch (\Throwable $th) {
+            return view('admin.products.delete', ['product'=>null]);
         }
-
-        return view('admin.products.delete', compact('product'));
+        
     }
 
     // Xử lý xóa sản phẩm
@@ -144,5 +162,21 @@ class ProductController extends Controller{
     }
 
         return view('client.product.show', compact('products'));
+    }
+
+    public function postConfirmComment(Request $request)
+    {
+        // Lấy dữ liệu từ request
+        $rating = $request->input('radio-sort');
+        $comment = $request->input('description');
+        $productId = $request->input('id');
+    
+        // Lấy người dùng hiện tại từ session (giả sử đã login)
+        $userId = session('user_id');
+        if(!$this->productService->postConfirmComment($userId, $productId, $rating, $comment )){
+            return redirect('/login')->with('user', 'bạn cần đăng nhập!');
+        }
+        // Chuyển hướng lại trang sản phẩm
+        return redirect('/product/' . $productId)->with('success', 'Cảm ơn bạn đã đánh giá!');
     }
 }

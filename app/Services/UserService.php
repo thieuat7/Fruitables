@@ -97,7 +97,7 @@ class UserService
         // Lưu avatar mới (nếu có) và xóa avatar cũ
         if (isset($data['user_avatar'])) {
             // Nếu có avatar cũ, xóa nó
-            if ($user->user_avatar) {
+            if ($user->user_avatar != "default-google.png" || $user->user_avatar != "default-avatar.jpg") {
                 Storage::disk('public')->delete('avatars/' . $user->user_avatar); // Thêm thư mục vào đường dẫn
             }
             // Lưu avatar mới và chỉ lưu tên file

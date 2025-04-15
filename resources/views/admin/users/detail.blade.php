@@ -41,6 +41,11 @@
                         <div class="col-md-6 col-12 mx-auto">
                             <h3>Update a User</h3>
                             <hr />
+                            @if(is_null($user))
+                            <div class="alert alert-danger">
+                                Không tìm thấy người dùng hoặc đã xảy ra lỗi.
+                            </div>
+                            @else
                             <form method="get" enctype="multipart/form-data" class="row g-3 p-3">
                                 @csrf
                                 <div class="col-md-6">
@@ -110,6 +115,7 @@
 
 
                             </form>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -41,6 +41,11 @@
                         <div class="col-md-6 col-12 mx-auto">
                             <h3>Update a Product</h3>
                             <hr />
+                            @if(is_null($product))
+                            <div class="alert alert-danger">
+                                Không tìm thấy sản phẩm hoặc đã xảy ra lỗi.
+                            </div>
+                            @else
                             <form method="post" action="/admin/product/update/{{$product->id}}"
                                 enctype="multipart/form-data" class="row g-3 p-3">
                                 @csrf
@@ -150,6 +155,7 @@
                                     <button type="submit" class="btn btn-warning">Update</button>
                                 </div>
                             </form>
+                            @endif
                         </div>
                     </div>
                 </div>

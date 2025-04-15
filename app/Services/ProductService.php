@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Models\Product;
+use App\Models\User;
+use App\Models\Review;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,6 +26,11 @@ class ProductService
     public function getAllProducts()
     {
         return Product::all();
+    }
+
+    public function getReviewWithIDProduct($ProductId)
+    {
+        return $review = Review::where('product_id',$ProductId )->get();
     }
 
     public function getProductById($id)
@@ -178,6 +185,29 @@ class ProductService
 
         // Phân trang với số sản phẩm mỗi trang
         return $query->paginate($perPage);
+    }
+
+
+    public function postConfirmComment($userId, $productId, $rating, $comment){
+        $user = User::find($userId);
+
+        if (!$user) {
+            return redirect()->back()->withErrors(['user' => 'Bạn cần đăng nhập để bình luận.']);
+        }
+    
+        // Kiểm tra sản phẩm tồn tại không
+        $product = Product::find($productId);
+        if (!$product) {
+            return redirect()->back()->withErrors(['product' => 'Sản phẩm không tồn tại.']);
+        }
+    
+        // Lưu review
+        Review::create([
+            'user_id' => $user->id,
+            'product_id' => $product->id,
+            'rating' => (int) $rating,
+            'comment' => $comment,
+        ]);
     }
 
 }

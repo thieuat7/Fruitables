@@ -41,6 +41,11 @@
                         <div class="col-md-6 col-12 mx-auto">
                             <h3>Delete a Product</h3>
                             <hr />
+                            @if(is_null($product))
+                            <div class="alert alert-danger">
+                                Không tìm thấy sản phẩm hoặc đã xảy ra lỗi.
+                            </div>
+                            @else
                             <div class="col-12 mx-auto">
                                 <div class="d-flex justify-content-between">
                                     <h3>Delete the product with id = {{ $product->id }}</h3>
@@ -60,6 +65,7 @@
                                     <button type="submit" class="btn btn-danger">Confirm</button>
                                 </form>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>
