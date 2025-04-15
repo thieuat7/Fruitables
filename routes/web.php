@@ -101,3 +101,5 @@ Route::get('/thank', [OrderController::class, 'thank'])->name('thank');
 
 //comment
 Route::post('/confirm-comment', [ProductController::class, 'postConfirmComment'])->name('comment.confirm');
+
+Route::post('/review/delete/{id}', [ProductController::class, 'postDeleteComment']);

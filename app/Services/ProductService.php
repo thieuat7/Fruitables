@@ -191,16 +191,16 @@ class ProductService
     public function postConfirmComment($userId, $productId, $rating, $comment){
         $user = User::find($userId);
 
-        if (!$user) {
-            return redirect()->back()->withErrors(['user' => 'Bạn cần đăng nhập để bình luận.']);
+        if (!$user || $userId==null) {
+            return false;
         }
-    
+
         // Kiểm tra sản phẩm tồn tại không
         $product = Product::find($productId);
         if (!$product) {
-            return redirect()->back()->withErrors(['product' => 'Sản phẩm không tồn tại.']);
+            return false;
         }
-    
+
         // Lưu review
         Review::create([
             'user_id' => $user->id,
@@ -208,5 +208,17 @@ class ProductService
             'rating' => (int) $rating,
             'comment' => $comment,
         ]);
+        return true;
+    }
+
+    public function handleDeleteComment($id){
+        $review=Review::find($id);
+
+        if(!$review){
+            return false;
+        }
+
+        $review->delete();
+        return true;
     }
 }

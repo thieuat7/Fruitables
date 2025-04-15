@@ -143,42 +143,24 @@
                                             <p class="mb-2" style="font-size: 14px;">cảm ơn bình luận của bạn</p>
                                             <div class="d-flex justify-content-between">
                                                 <h5 style="margin-right: 5px;">{{ $review->user->user_name }}</h5>
-                                                @if($review->rating==1){
-                                                <label class="form-check-label" for="sort-1"><i
-                                                        class="fa fa-star text-secondary"></i>
-                                                </label>
-                                                }@elseif($review->rating==2){
-                                                <label class="form-check-label" for="sort-2">
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                </label>
-                                                }
-                                                @elseif($review->rating==3){
-                                                <label class="form-check-label" for="sort-3">
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-
-                                                </label>
-                                                }
-                                                @elseif($review->rating==4){
-                                                <label class="form-check-label" for="sort-4">
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-
+                                                {{-- Hiển thị sao đánh giá --}}
+                                                <label class="form-check-label">
+                                                    @for ($i = 1; $i <= 5; $i++) <i
+                                                        class="fa fa-star {{ $i <= $review->rating ? 'text-secondary' : 'text-muted' }}">
+                                                        </i>
+                                                        @endfor
                                                 </label>
 
-                                                }@else
-                                                <label class="form-check-label" for="sort-5">
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-
-                                                </label>
+                                                {{-- Chỉ admin (role_id = 1) mới thấy nút xoá --}}
+                                                @if (session('role_id') == 1)
+                                                <form action="/review/delete/{{ $review->id }}" method="POST"
+                                                    class="ms-3">
+                                                    @csrf
+                                                    <input style="display: none;" type="hidden" name="productId"
+                                                        value="{{$product->id }}">
+                                                    <button type="submit" class="btn btn-danger btn-sm"
+                                                        onclick="return confirm('Bạn có chắc muốn xóa bình luận này không?')">Xóa</button>
+                                                </form>
                                                 @endif
                                             </div>
                                             <p class="text-dark">{{ $review->comment }} </p>

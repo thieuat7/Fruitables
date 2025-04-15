@@ -29,6 +29,7 @@ class AuthController extends Controller
             if ($user) {
                 $request->session()->put('email', $user->user_email);
                 $request->session()->put('user_id', $user->id);
+                $request->session()->put('role_id', $user->role_id);
                 return redirect()->route('home');
             }
         }

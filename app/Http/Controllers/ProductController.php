@@ -166,17 +166,38 @@ class ProductController extends Controller{
 
     public function postConfirmComment(Request $request)
     {
-        // Lấy dữ liệu từ request
-        $rating = $request->input('radio-sort');
-        $comment = $request->input('description');
-        $productId = $request->input('id');
-    
-        // Lấy người dùng hiện tại từ session (giả sử đã login)
-        $userId = session('user_id');
-        if(!$this->productService->postConfirmComment($userId, $productId, $rating, $comment )){
+        try {
+            $rating = $request->input('radio-sort');
+            $comment = $request->input('description');
+            $productId = $request->input('id');
+
+            // Lấy người dùng hiện tại từ session (giả sử đã login)
+            $userId = session('user_id');
+            if(!$this->productService->postConfirmComment($userId, $productId, $rating, $comment )){
+                return redirect('/login')->with('user', 'bạn cần đăng nhập!');
+            }
+            // Chuyển hướng lại trang sản phẩm
+            return redirect('/product/' . $productId)->with('success', 'Cảm ơn bạn đã đánh giá!');
+        } catch (\Throwable $th) {
             return redirect('/login')->with('user', 'bạn cần đăng nhập!');
         }
-        // Chuyển hướng lại trang sản phẩm
-        return redirect('/product/' . $productId)->with('success', 'Cảm ơn bạn đã đánh giá!');
+    }
+
+    public function postDeleteComment(Request $request, $id)
+    {
+        try {
+            $productId=$request->input('productId');
+            if(!$id){
+                return redirect('/product/' . $productId)->with('error', 'Không có id comment');
+            }
+
+            if(!$this->productService->handleDeleteComment($id)){
+                return redirect('/product/' . $productId)->with('error', 'Không có id comment');
+            }
+
+            return redirect('/product/' . $productId)->with('success', 'xóa thành công');
+        } catch (\Throwable $th) {
+            return redirect('/')->with('error', 'Không có id comment');
+        }
     }
 }
