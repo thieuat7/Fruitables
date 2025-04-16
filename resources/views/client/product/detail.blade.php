@@ -45,29 +45,8 @@
 
 
 
-    <!-- Modal Search Start -->
-    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content rounded-0">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex align-items-center">
-                    <div class="input-group w-75 mx-auto d-flex">
-                        <input type="search" class="form-control p-3" placeholder="keywords"
-                            aria-describedby="search-icon-1">
-                        <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Search End -->
-
-
     <!-- Single Page Header start -->
-    <div class="container-fluid page-header py-1">
+    <div style="margin-top: 123px !important;" class="container-fluid page-header py-1">
         <h3 class="text-center text-white display-8">Shop Detail</h3>
         <ol class="breadcrumb justify-content-center mb-0 ">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -78,7 +57,7 @@
 
 
     <!-- Single Product Start -->
-    <div class="container-fluid py-5 mt-5">
+    <div class="container-fluid py-2 mt-1">
         <div class="container py-5">
             <div class="row g-4 mb-5">
                 <div class="col-lg-8 col-xl-9">

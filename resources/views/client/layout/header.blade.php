@@ -1,23 +1,23 @@
 <body>
     <!-- Navbar start -->
-    <div class="container-fluid fixed-top">
-        <div class="container topbar bg-primary d-none d-lg-block">
+    <div class="container-fluid fixed-top" style="z-index: 1050; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);">
+        <div class="container topbar bg-primary d-none d-lg-block" style="padding: 5px 0; font-size: 13px;">
             <div class="d-flex justify-content-between">
                 <div class="top-info ps-2">
                     <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#"
-                            class="text-white">123 Street, New York</a></small>
-                    <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#"
-                            class="text-white">Email@Example.com</a></small>
+                            class="text-white">280 Đ. An Dương Vương</a></small>
                 </div>
                 <div class="top-link pe-2">
-                    <a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
-                    <a href="#" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
-                    <a href="#" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a>
+                    <a href="#" class="text-white"><small class="text-white mx-2">Chính sách bảo mật</small>/</a>
+                    <a href="#" class="text-white"><small class="text-white mx-2">Điều khoản sử dụng</small>/</a>
+                    <a href="#" class="text-white"><small class="text-white ms-2">Bán hàng và hoàn tiền</small></a>
                 </div>
             </div>
         </div>
         <div class="container px-0">
-            <nav class="navbar navbar-light bg-white navbar-expand-xl">
+            <nav class="navbar navbar-light bg-white navbar-expand-xl d-flex align-items-center"
+                style="padding: 0.1rem 0.5rem; min-height: 42px;">
+
                 <a href="/" class="navbar-brand">
                     <h1 class="text-primary display-6">Fruitables</h1>
                 </a>
@@ -29,16 +29,6 @@
                     <div class="navbar-nav mx-auto">
                         <a href="/" class="nav-item nav-link active">Home</a>
                         <a href="/product" class="nav-item nav-link">Shop</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                <a href="cart.html" class="dropdown-item">Cart</a>
-                                <a href="chackout.html" class="dropdown-item">Chackout</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="404.html" class="dropdown-item">404 Page</a>
-                            </div>
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="d-flex m-3 me-0">
                         @if(auth()->check())

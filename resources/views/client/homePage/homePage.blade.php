@@ -84,14 +84,9 @@
         <div class="container py-5">
             <div class="row g-5 align-items-center">
                 <div class="col-md-12 col-lg-7">
-                    <h4 class="mb-3 text-secondary">100% Organic Foods</h4>
-                    <h1 class="mb-5 display-3 text-primary">Organic Veggies & Fruits Foods</h1>
+                    <h4 class="mb-3 text-secondary">Thực phẩm hữu cơ 100%</h4>
+                    <h1 class="mb-5 display-3 text-primary">Rau củ quả hữu cơ & Thực phẩm</h1>
                     <div class="position-relative mx-auto">
-                        <input class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill" type="number"
-                            placeholder="Search">
-                        <button type="submit"
-                            class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
-                            style="top: 0; right: 25%;">Submit Now</button>
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-5">
@@ -128,12 +123,12 @@
 
 
     <!-- Fruits Shop Start-->
-    <div class="container-fluid fruite py-5">
+    <div class="container-fluid fruite">
         <div class="container py-5">
             <div class="tab-class text-center">
                 <div class="row g-4">
                     <div class="col-lg-4 text-start">
-                        <h1>Our Organic Products</h1>
+                        <h1>Tất cả sản phẩm</h1>
                     </div>
                     <div class="col-lg-8 text-end">
                         <ul class="nav nav-pills d-inline-flex text-center mb-5">
@@ -211,9 +206,9 @@
 
 
     <!-- Vesitable Shop Start-->
-    <div class="container-fluid vesitable py-5">
+    <div class="container-fluid vesitable">
         <div class="container py-5">
-            <h1 class="mb-0">Fresh Organic Vegetables</h1>
+            <h1 class="mb-0">Tất cả sản phẩm</h1>
             <div class="owl-carousel vegetable-carousel justify-content-center">
                 @foreach ($allproduct as $product)
                 <div class="border border-primary rounded position-relative vesitable-item">
@@ -251,12 +246,12 @@
 
 
     <!-- Bestsaler Product Start -->
-    <div class="container-fluid py-5">
+    <div class="container-fluid">
         <div class="container py-5">
             <div class="text-center mx-auto mb-5" style="max-width: 700px;">
-                <h1 class="display-4">Discount Products</h1>
-                <p style="color: red; font-size: 20px;">Products are only discounted when purchased directly at the
-                    store.</p>
+                <h1 class="display-4">Sảm phẩm giảm giá</h1>
+                <p style="color: red; font-size: 20px;">Sản phẩm chỉ được giảm giá khi mua trực tiếp tại
+                    cửa hàng</p>
             </div>
             <div class="row g-4">
                 @foreach ($productDiscounts as $productDiscount)

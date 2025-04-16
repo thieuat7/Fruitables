@@ -95,7 +95,7 @@
 
 
     <!-- Fruits Shop Start-->
-    <div class="container-fluid fruite py-5">
+    <div style="margin-top: -30px;" class="container-fluid fruite py-5">
         <div class="container py-5">
             <div class="row g-4 mt-5">
                 <div class="col-lg-12">
