@@ -5,55 +5,60 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class GoogleController extends Controller
 {
     public function redirectToGoogle()
     {
         return Socialite::driver('google')
-            ->scopes(['openid', 'profile', 'email'])
-            ->redirect();
+        ->scopes(['openid', 'profile', 'email'])
+        ->with(['prompt' => 'select_account consent']) // Thêm dòng này
+        ->redirect();
     }
 
     public function handleGoogleCallback()
-    {
-        try {
-            // Lấy thông tin user từ Google
-            $socialUser = Socialite::driver('google')->stateless()->user();
+{
+    try {
+        $socialUser = Socialite::driver('google')->stateless()->user();
+        $provider = 'GOOGLE';
 
+        $user = User::where('provider', $provider)
+                    ->where('provider_id', $socialUser->getId())
+                    ->where('user_email', $socialUser->getEmail())
+                    ->first();
 
-            $provider = 'GOOGLE'; // Xác định provider là google
+        if ($user == null) {
+            // 1. Lấy avatar URL
+            $avatarUrl = $socialUser->getAvatar();
 
+            // 2. Lấy nội dung ảnh
+            $avatarContents = file_get_contents($avatarUrl); // Cần bật allow_url_fopen hoặc dùng Guzzle
 
-            // Tìm user đã tồn tại theo provider + provider_id
-            $user = User::where('provider', $provider)
-                        ->where('provider_id', $socialUser->getId())
-                        ->where('user_email', $socialUser->getEmail() )
-                        ->first();
+            // 3. Đặt tên file ngẫu nhiên
+            $fileName = Str::random(20) . '.jpg';
 
-            // Kiểm tra có lấy được email không
-            //dd($socialUser->getEmail());
-            //dd($user);
+            // 4. Lưu ảnh vào storage/app/public/avatar/
+            Storage::disk('public')->put("avatars/{$fileName}", $avatarContents);
 
-            if ($user==null) {
-                // Nếu chưa có user, tạo mới
-                $user = User::create([
-                    'user_name'        => $socialUser->getName(),
-                    'user_email'       => $socialUser->getEmail(),
-                    'role_id'   =>3,
-                    'provider'    => $provider,
-                    'provider_id' => $socialUser->getId(),
-                    'user_avatar'      => "default-google.png",
-                    'user_password'    => bcrypt('defaultpassword') // có thể random nếu không dùng
-                ]);
-            }
-
-            // Đăng nhập user
-            Auth::login($user);
-            session()->regenerate();
-            return redirect('/');
-        } catch (\Exception $e) {
-            return redirect('/')->with('error', 'Đăng nhập Google thất bại!');
+            // 5. Lưu tên file vào DB
+            $user = User::create([
+                'user_name'     => $socialUser->getName(),
+                'user_email'    => $socialUser->getEmail(),
+                'role_id'       => 3,
+                'provider'      => $provider,
+                'provider_id'   => $socialUser->getId(),
+                'user_avatar'   => $fileName, // tên file
+                'user_password' => bcrypt('defaultpassword'),
+            ]);
         }
+
+        Auth::login($user);
+        session()->regenerate();
+        return redirect('/');
+    } catch (\Exception $e) {
+        return redirect('/')->with('error', 'Đăng nhập Google thất bại!');
     }
+}
 }
