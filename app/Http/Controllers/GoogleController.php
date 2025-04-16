@@ -28,6 +28,7 @@ class GoogleController extends Controller
             // Tìm user đã tồn tại theo provider + provider_id
             $user = User::where('provider', $provider)
                         ->where('provider_id', $socialUser->getId())
+                        ->where('user_email', $socialUser->getEmail() )
                         ->first();
 
             // Kiểm tra có lấy được email không
