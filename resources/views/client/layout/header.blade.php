@@ -33,28 +33,28 @@
                     <div class="d-flex m-3 me-0">
                         @if(auth()->check())
                         <!-- Nếu đã đăng nhập -->
-                        <div class="dropdown my-auto dropdown-hover me-4">
+                        <!-- <div class="dropdown my-auto dropdown-hover me-4">
                             <a href="#" class="position-relative" role="button" id="notificationDropdown"
                                 aria-expanded="false">
-                                <i class="fas fa-bell fa-2x"></i>
-                                <!-- Số lượng thông báo -->
-                                <span
+                                <i class="fas fa-bell fa-2x"></i> -->
+                        <!-- Số lượng thông báo -->
+                        <!-- <span
                                     class="position-absolute bg-danger rounded-circle d-flex align-items-center justify-content-center text-white px-1"
                                     style="top: -5px; right: -5px; height: 20px; min-width: 20px;">
                                     3
                                 </span>
                             </a>
-                        </div>
+                        </div> -->
                         <div class="dropdown my-auto dropdown-hover me-4">
                             <a href="/cart" class="position-relative" role="button" id="cartDropdown"
                                 aria-expanded="false">
                                 <i class="fas fa-shopping-cart fa-2x"></i>
                                 <!-- Số lượng sản phẩm trong giỏ hàng -->
-                                <span
+                                <!-- <span
                                     class="position-absolute bg-danger rounded-circle d-flex align-items-center justify-content-center text-white px-1"
                                     style="top: -5px; right: -5px; height: 20px; min-width: 20px;">
                                     5
-                                </span>
+                                </span> -->
                             </a>
                         </div>
 

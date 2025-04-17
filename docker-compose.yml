@@ -8,7 +8,14 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - .:/var/www
+      - ./app:/var/www/app
+      - ./bootstrap:/var/www/bootstrap
+      - ./config:/var/www/config
+      - ./database:/var/www/database
+      - ./public:/var/www/public
+      - ./resources:/var/www/resources
+      - ./routes:/var/www/routes
+      - ./storage:/var/www/storage
       - ./.env:/var/www/.env
       - ./storage/app/public:/var/www/storage/app/public
       - ./storage/app/public/products:/var/www/storage/app/public/products
@@ -19,7 +26,8 @@ services:
       - mysql-db
     networks:
       - laravel
-    command: sh -c "php artisan config:clear && php artisan key:generate && php artisan serve --host=0.0.0.0 --port=80"
+    command: >
+      sh -c " php artisan config:clear && php artisan cache:clear && php artisan config:cache && php artisan key:generate && php artisan serve --host=0.0.0.0 --port=80"
 
   mysql-db:
     image: mysql:5.7

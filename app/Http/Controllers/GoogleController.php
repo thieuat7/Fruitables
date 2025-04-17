@@ -56,6 +56,10 @@ class GoogleController extends Controller
 
         Auth::login($user);
         session()->regenerate();
+        // Bổ sung thêm session như login thường
+        session()->put('email', $user->user_email);
+        session()->put('user_id', $user->id);
+        session()->put('role_id', $user->role_id);
         return redirect('/');
     } catch (\Exception $e) {
         return redirect('/')->with('error', 'Đăng nhập Google thất bại!');

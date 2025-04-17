@@ -21,6 +21,13 @@ class OrderService
 
     }
 
+    public function getOrdersByUserId($userId)
+    {
+        return Order::with('orderDetails')
+                    ->where('user_id', $userId)
+                    ->get();
+    }
+
     public function handleUpdateOrder($status ,$id)
     {
         $order= Order::with('orderDetails')->find($id);

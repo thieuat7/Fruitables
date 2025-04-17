@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Apr 17, 2025 at 03:32 AM
+-- Generation Time: Apr 17, 2025 at 01:12 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -63,8 +63,8 @@ CREATE TABLE `cart_details` (
 --
 
 INSERT INTO `cart_details` (`id`, `cartDetails_checkbox`, `cartDetails_quantity`, `product_id`, `cart_id`, `created_at`, `updated_at`) VALUES
-(39, 0, 1, 2, 24, '2025-04-15 19:44:41', '2025-04-15 19:44:45'),
-(40, 1, 1, 3, 24, '2025-04-15 19:44:43', '2025-04-15 19:44:52');
+(39, 0, 1, 2, 24, '2025-04-15 19:44:41', '2025-04-17 03:40:30'),
+(40, 0, 1, 3, 24, '2025-04-15 19:44:43', '2025-04-17 03:40:30');
 
 -- --------------------------------------------------------
 
@@ -377,7 +377,7 @@ INSERT INTO `users` (`id`, `user_name`, `user_email`, `user_password`, `user_pho
 (1, 'Admin Account', 'admin@gmail.com', '$2y$10$0QX0lZXtx/i6Td.qRZB8DusIw1jcqWt8ETTgM8gWR/5RThWK.04vC', '0123456789', 'default-google.png', 1, NULL, NULL, 'TP HCM', NULL, NULL),
 (2, 'Shipper Account', 'shipper@gmail.com', '$2y$10$0QX0lZXtx/i6Td.qRZB8DusIw1jcqWt8ETTgM8gWR/5RThWK.04vC', '0987654321', 'default-google.png', 2, NULL, NULL, 'TP HCM', NULL, NULL),
 (3, 'User Account', 'user@gmail.com', '$2y$10$0QX0lZXtx/i6Td.qRZB8DusIw1jcqWt8ETTgM8gWR/5RThWK.04vC', '0345678912', 'default-google.png', 3, NULL, NULL, 'TP HCM', NULL, NULL),
-(23, 'Hoang Tan dung', 'test@gmail.com', '$2y$10$QOMnxMd77O8fFwCznwGOU.WduNZzflmQ.yjEUmzm4KO8NscIbkE2m', '0123456789', 'a7os6gy4HwJ89w7lbIeN.jpg', 3, '2025-03-18 19:06:39', '2025-03-18 19:06:39', 'HA NOI', NULL, NULL),
+(23, 'Hoang Tan dung', 'test@gmail.com', '$2y$10$QOMnxMd77O8fFwCznwGOU.WduNZzflmQ.yjEUmzm4KO8NscIbkE2m', '0123456789', 'M90i6FdoVaJXoWSBhqsdIKDm16cwpTXz9NxUNN0q.png', 3, '2025-03-18 19:06:39', '2025-04-17 03:12:27', 'HA NOI', NULL, NULL),
 (31, 'HOÀNG TẤN DŨNG', 'dungakaishi900@gmail.com', '$2y$10$lfMMzZDYJjW2/IiF3WAih.jxV4acRB1bPqD3TfroCrztGjDu9Nuh6', NULL, '2bYEheZx5h74kFilqAR0.jpg', 3, '2025-04-15 20:57:47', '2025-04-15 20:57:47', NULL, 'GOOGLE', '115133837947112457243');
 
 -- --------------------------------------------------------

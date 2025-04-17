@@ -122,8 +122,16 @@ Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('place
 
 Route::get('/thank', [OrderController::class, 'thank'])->name('thank');
 
+Route::get('/order-history', [OrderController::class, 'getOrderHistory']);
+
 //comment
 
 Route::post('/confirm-comment', [ProductController::class, 'postConfirmComment'])->name('comment.confirm');
 
 Route::post('/review/delete/{id}', [ProductController::class, 'postDeleteComment']);
+
+//profile
+
+Route::get('/user-profile', [HomePageController::class, 'getUserProfile']);
+
+Route::post('/update-user-in-profile', [HomePageController::class, 'postUpdateProfile']);

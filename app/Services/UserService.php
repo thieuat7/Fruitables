@@ -119,4 +119,33 @@ class UserService
 
         return $user;
     }
+
+
+    public function updateProfileUserHomepage(array $data, User $user)
+    {
+        // Cập nhật thông tin cơ bản
+        $user->user_name = $data['user_name'];
+        $user->user_phone = $data['user_phone'] ?? null;
+        $user->user_address = $data['user_address'] ?? null;
+
+
+        // Lưu avatar mới (nếu có) và xóa avatar cũ
+        if (isset($data['user_avatar']) && $data['user_avatar'] instanceof \Illuminate\Http\UploadedFile) {
+            if (
+                $user->user_avatar !== "default-google.png" &&
+                $user->user_avatar !== "default-avatar.jpg" &&
+                Storage::disk('public')->exists('avatars/' . $user->user_avatar)
+            ) {
+                Storage::disk('public')->delete('avatars/' . $user->user_avatar);
+            }
+
+            $data['user_avatar'] = basename($data['user_avatar']->store('avatars', 'public'));
+            $user->user_avatar = $data['user_avatar'];
+        }
+
+        $user->save();
+
+        return true;
+    }
+
 }

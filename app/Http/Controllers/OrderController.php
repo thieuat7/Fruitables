@@ -42,6 +42,19 @@ class OrderController extends Controller
         }
     }
 
+    public function getOrderHistory(){
+        try {
+            $id = session('user_id');
+            $orders = $this->orderService->getOrdersByUserId($id);
+            if(!$orders){
+                return view('client.cart.orderHistory', ['orders'=>null]);
+            }
+            return view('client.cart.orderHistory', compact('orders'));
+        } catch (\Throwable $th) {
+            return view('client.cart.orderHistory', ['orders'=>null]);
+        }
+    }
+
     public function updateOrder($id){
         try {
             $orders = $this->orderService->getOrderById($id);
@@ -52,7 +65,6 @@ class OrderController extends Controller
         } catch (\Throwable $th) {
             return view('admin.order.update', ['orders'=>null]);
         }
-        
     }
 
     public function handleUpdateOrder(Request $request, $id){

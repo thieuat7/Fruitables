@@ -38,10 +38,13 @@ class AuthController extends Controller
     }
 
     public function logout()
-    {
-        $this->authService->logout();
-        return redirect()->route('home');
-    }
+{
+    auth()->logout();  // Đăng xuất người dùng
+    session()->invalidate();  // Xóa tất cả session
+    session()->regenerateToken();  // Tạo lại CSRF token để bảo mật
+    return redirect()->route('home');
+}
+
 
     public function showRegisterForm(){
         return view('client.auth.register');
