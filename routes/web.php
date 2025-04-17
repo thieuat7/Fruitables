@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
@@ -103,7 +102,7 @@ Route::middleware(['auth', 'role:1'])->group(function () {
     Route::post('/admin/discount/update/{id}', [DiscountController::class, 'postUpdateProductDiscount']);
 });
 
-
+//product
 
 Route::get('/product/{id}', [ProductController::class, 'getProductDetailPage']);
 

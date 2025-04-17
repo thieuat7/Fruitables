@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 use App\Services\ProductService;
+use App\Services\DiscountService;
 use Illuminate\Http\Request;
 class ProductController extends Controller{
     private $productService;
+    private $discountService;
 
-    public function __construct(ProductService $productService){
+    public function __construct(ProductService $productService, DiscountService $discountService){
         $this->productService = $productService;
+        $this->discountService = $discountService;
     }
 
     public function getAllProduct()
@@ -45,7 +48,8 @@ class ProductController extends Controller{
         $product = $this->productService->getProductById($id);
         $reviews = $this->productService->getReviewWithIDProduct($id);
         $allproduct= $this->productService->getAllProducts();
-        return view('client.product.detail', compact('product','allproduct','reviews' ));
+        $productDiscounts = $this->discountService->getAllProductDiscountActive();
+        return view('client.product.detail', compact('product','allproduct', 'reviews', 'productDiscounts' ));
     }
 
 
