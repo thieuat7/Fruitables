@@ -23,3 +23,6 @@ RUN chown -R www-data:www-data /var/www \
 
 # Expose cổng 80 cho php artisan serve
 EXPOSE 80
+
+COPY .env .env
+
