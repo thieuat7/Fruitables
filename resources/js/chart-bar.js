@@ -2,8 +2,12 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
-// Bar Chart Example
+// Bar Chart 
+
+const orderMonthlyData = @json($orderCountByYear);
+
 var ctx = document.getElementById("myBarChart");
+
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
