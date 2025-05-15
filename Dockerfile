@@ -22,7 +22,7 @@ RUN chown -R www-data:www-data /var/www \
     && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
 # Copy file .env
-COPY .env .env
+# COPY .env .env
 
 # Expose cổng 80 (không bắt buộc nhưng để chuẩn)
 EXPOSE 80
