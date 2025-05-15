@@ -12,7 +12,8 @@ class OrderService
 
     public function getAllOrder($perPage = 10)
     {
-        return Order::paginate($perPage);
+        $orders = Order::orderBy('created_at', 'desc')->paginate($perPage);
+        return $orders;
     }
 
     public function searchOrders($searchTerm, $perPage = 10)
@@ -159,8 +160,5 @@ class OrderService
 
     return $order;
 }
-
-
-
 
 }

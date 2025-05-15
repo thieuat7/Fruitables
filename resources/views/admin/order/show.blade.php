@@ -39,19 +39,21 @@
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">tatle price</th>
-                                    <th scope="col">address</th>
-                                    <th scope="col">name</th>
-                                    <th scope="col">status</th>
+                                    <th scope="col">Tatle price</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Creat at</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody>  
                                 @foreach ($orders as $order)
                                 <tr>
                                     <td>{{ $order->id }}</td>
                                     <td>{{ $order->total_price }}</td>
                                     <td>{{ $order->receiver_address }}</td>
+                                    <td>{{ $order->created_at }}</td>
                                     <td>{{ $order->receiver_name }}</td>
                                     <td>
                                         @if ($order->order_status === 'pending')

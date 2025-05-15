@@ -43,6 +43,7 @@
                                     <tr class="table-head">
                                         <th scope="col">ID</th>
                                         <th scope="col">Email</th>
+                                        <th scope="col">Name</th>
                                         <th scope="col">Role Description</th>
                                         <th scope="col">Role</th>
                                         <th scope="col">Actions</th>
@@ -53,6 +54,7 @@
                                         <tr class="table-row">
                                             <td>{{ $user->id }}</td>
                                             <td>{{ $user->user_email }}</td>
+                                            <td>{{ $user->user_name }}</td>
                                             <td>{{ $user->role->role_description }}</td>
                                             <td>{{ $user->role->role_name }}</td>
                                             <td>
