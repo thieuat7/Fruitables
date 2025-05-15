@@ -21,8 +21,15 @@ RUN composer install --no-interaction --prefer-dist
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
-# Expose cổng 80 cho php artisan serve
-EXPOSE 80
-
+# Copy file .env
 COPY .env .env
 
+# Expose cổng 80 (không bắt buộc nhưng để chuẩn)
+EXPOSE 80
+
+# Copy script start.sh vào container
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
+# Khi container khởi động, chạy start.sh
+CMD ["/start.sh"]
