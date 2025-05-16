@@ -294,7 +294,7 @@
 
 
    <!-- JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" ></script>
 
     <script src="{{ secure_asset('lib/easing/easing.min.js') }}"></script>
     <script src="{{ secure_asset('lib/waypoints/waypoints.min.js') }}"></script>
