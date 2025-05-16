@@ -1,9 +1,9 @@
 FROM php:8.0-fpm
 
-# Cài extension PHP và các tool cần thiết
+# Cài các thư viện hệ thống và PHP extension cần thiết cho PostgreSQL
 RUN apt-get update && apt-get install -y \
-    libpng-dev libonig-dev libxml2-dev zip unzip git curl \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+    libpng-dev libonig-dev libxml2-dev zip unzip git curl libpq-dev \
+    && docker-php-ext-install pdo_mysql pdo_pgsql pgsql mbstring exif pcntl bcmath gd
 
 # Cài Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -21,9 +21,6 @@ RUN composer install --no-interaction --prefer-dist
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
-# Copy file .env
-# COPY .env .env
-
 # Expose cổng 80 (không bắt buộc nhưng để chuẩn)
 EXPOSE 80
 
@@ -33,4 +30,3 @@ RUN chmod +x /start.sh
 
 # Khi container khởi động, chạy start.sh
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=80"]
-
