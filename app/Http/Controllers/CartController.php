@@ -21,17 +21,33 @@ class CartController extends Controller
         // Kiểm tra xem người dùng đã đăng nhập chưa
         $email = $request->session()->get('email');
         if (!$email) {
-            // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
+        if ($request->ajax()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Bạn cần đăng nhập để thêm vào giỏ hàng!'
+            ], 401);
+        } else {
             return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để thêm vào giỏ hàng!');
         }
+}
         $quantity = $request->input('quantity', 1);
 
         // Nếu đã đăng nhập, tiến hành thêm vào giỏ hàng
-        $this->cartService->handleAddProductToCart($email, $id, $quantity );
+        try {
+        $this->cartService->handleAddProductToCart($email, $id, $quantity);
+
         return response()->json([
             'status' => 'success',
             'message' => 'Thêm sản phẩm vào giỏ hàng thành công!',
         ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Lỗi khi thêm sản phẩm vào giỏ hàng.',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+
     }
 
     public function getCartPage(Request $request)
