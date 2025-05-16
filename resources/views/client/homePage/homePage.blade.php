@@ -12,16 +12,16 @@
 
     <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet">
 
 <!-- jQuery Toast CSS & JS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" integrity="sha512-LmGB3TXykdx9PVuZk3VaR9b7NcXlg2xEX7sP6FyaCGvi+K6YMsSC95ylqABM90K8Z8G8XYBRYhfw/UUShe+uBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJ+n23e+prvAMYeKfwEf0XqU61EulwObJfjs0=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js" integrity="sha512-jSpAE95m7G5Gg3hYqM+BFw38FZXZocKp1r/JPVRDrKiJoUvvEN5tfjxP1wq7nKsfxtYvibV3H14NQ5UB8GBfbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
 
 <!-- Icon Fonts -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
 <!-- Libraries Stylesheet -->
