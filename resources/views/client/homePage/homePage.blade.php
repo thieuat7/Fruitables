@@ -11,31 +11,29 @@
     <meta name="_csrf_header" content="X-CSRF-TOKEN">
 
     <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
-        rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet">
 
-    <!--Sử dụng thư viện jQuery Toast:-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
+<!-- jQuery Toast CSS & JS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" integrity="sha512-LmGB3TXykdx9PVuZk3VaR9b7NcXlg2xEX7sP6FyaCGvi+K6YMsSC95ylqABM90K8Z8G8XYBRYhfw/UUShe+uBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJ+n23e+prvAMYeKfwEf0XqU61EulwObJfjs0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js" integrity="sha512-jSpAE95m7G5Gg3hYqM+BFw38FZXZocKp1r/JPVRDrKiJoUvvEN5tfjxP1wq7nKsfxtYvibV3H14NQ5UB8GBfbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <!-- Icon Font Stylesheet -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+<!-- Icon Fonts -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="{{ secure_asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ secure_asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+<!-- Libraries Stylesheet -->
+<link href="{{ secure_asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+<link href="{{ secure_asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 
+<!-- Bootstrap -->
+<link href="{{ secure_asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ secure_asset('css/bootstrap.min.css') }}" rel="stylesheet">
+<!-- Custom Template Style -->
+<link href="{{ secure_asset('css/style.css') }}" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
-    <link href="{{ secure_asset('css/style.css') }}" rel="stylesheet">
     <style>
         .pagination {
             margin-top: 50px;
@@ -295,15 +293,17 @@
             class="fa fa-arrow-up"></i></a>
 
 
-    <!-- JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('lib/lightbox/js/lightbox.min.js') }}"></script>
-    <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+   <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
+
+    <script src="{{ secure_asset('lib/easing/easing.min.js') }}"></script>
+    <script src="{{ secure_asset('lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ secure_asset('lib/lightbox/js/lightbox.min.js') }}"></script>
+    <script src="{{ secure_asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
 
     <!-- Template Javascript -->
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ secure_asset('js/main.js') }}"></script>
+
 </body>
 
 </html>
