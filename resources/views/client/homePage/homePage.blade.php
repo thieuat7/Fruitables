@@ -27,15 +27,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="{{ asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('lib/owlcarousel/secure_assets/owl.carousel.min.css') }}" rel="stylesheet">
 
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/style.css') }}" rel="stylesheet">
     <style>
         .pagination {
             margin-top: 50px;
@@ -152,7 +152,7 @@
                                             <div class="rounded position-relative fruite-item">
                                                 <div class="fruite-img">
                                                     <img loading="lazy"
-                                                        src="{{ asset('storage/products/' . $product->product_image_url) }}"
+                                                        src="{{ secure_asset('storage/products/' . $product->product_image_url) }}"
                                                         class="img-fluid w-100 rounded-top" alt="">
                                                 </div>
                                                 <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
@@ -202,7 +202,7 @@
                 @foreach ($allproduct as $product)
                     <div class="border border-primary rounded position-relative vesitable-item">
                         <div class="vesitable-img">
-                            <img src="{{ asset('storage/products/' . $product->product_image_url) }}"
+                            <img src="{{ secure_asset('storage/products/' . $product->product_image_url) }}"
                                 class="img-fluid w-100 rounded-top" alt="">
                         </div>
                         <div class="text-white bg-primary px-3 py-1 rounded position-absolute"
@@ -240,7 +240,7 @@
                         <div class="p-4 rounded bg-light position-relative">
                             <div class="row align-items-center">
                                 <div class="col-6 position-relative">
-                                    <img src="{{ asset('storage/products/' . $productDiscount->product->product_image_url) }}"
+                                    <img src="{{ secure_asset('storage/products/' . $productDiscount->product->product_image_url) }}"
                                         style="object-fit: cover; height: 140px; width: 140px;"
                                         class="img-fluid rounded-circle" alt="" />
                                     <span style="font-size: 20px;"
@@ -297,13 +297,13 @@
 
     <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('lib/lightbox/js/lightbox.min.js') }}"></script>
-    <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ secure_asset('lib/easing/easing.min.js') }}"></script>
+    <script src="{{ secure_asset('lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ secure_asset('lib/lightbox/js/lightbox.min.js') }}"></script>
+    <script src="{{ secure_asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
 
     <!-- Template Javascript -->
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ secure_asset('js/main.js') }}"></script>
 </body>
 
 </html>
