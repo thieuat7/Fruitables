@@ -364,6 +364,7 @@
                     _token: token
                 },
                 success: function (response) {
+                     console.log("Server response (success):", response);
                     // Kiểm tra nếu server trả về 'status' là 'success'
                     if (response.status === 'success') {
                         $.toast({
@@ -373,10 +374,14 @@
                             icon: 'success'
                         });
                     }
+ 
                 },
                 error: function (xhr, status, error) {
                     // Xử lý lỗi nếu cần thiết
                     console.error("Error adding product to cart:", error);
+                    console.log("xhr object:", xhr);
+                    console.log("📡 status:", status);
+
                 }
 
             });
