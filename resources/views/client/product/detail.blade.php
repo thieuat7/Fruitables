@@ -25,15 +25,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="{{ asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -70,7 +70,7 @@
                         <div class="col-lg-6">
                             <div class="border rounded">
                                 <a href="#">
-                                    <img src="{{ asset('storage/products/' . $product->product_image_url) }}"
+                                    <img src="{{ secure_asset('storage/products/' . $product->product_image_url) }}"
                                         class="img-fluid rounded" alt="Image">
                                 </a>
                             </div>
@@ -131,7 +131,7 @@
                                     aria-labelledby="nav-mission-tab">
                                     @foreach ($reviews as $review)
                                         <div class="d-flex">
-                                            <img src="{{ asset('storage/avatars/' . $review->user->user_avatar) }}"
+                                            <img src="{{ secure_asset('storage/avatars/' . $review->user->user_avatar) }}"
                                                 class="img-fluid rounded-circle p-3"
                                                 style="width: 100px; height: 100px; object-fit: cover;" alt="" o>
                                             <div class="">
@@ -244,7 +244,7 @@
                             @foreach ($productDiscounts as $productDiscount)
                                 <div class="d-flex align-items-center justify-content-start">
                                     <div class="rounded position-relative" style="width: 100px; height: 100px;">
-                                        <img src="{{ asset('storage/products/' . $productDiscount->product->product_image_url) }}"
+                                        <img src="{{ secure_asset('storage/products/' . $productDiscount->product->product_image_url) }}"
                                             class="img-fluid rounded" alt="Image">
                                         <span style="font-size: 14px;"
                                             class="badge bg-danger position-absolute top-0 start-0 m-1">
@@ -289,7 +289,7 @@
                     @foreach ($allproduct as $product)
                         <div class="border border-primary rounded position-relative vesitable-item">
                             <div class="vesitable-img">
-                                <img src="{{ asset('storage/products/' . $product->product_image_url) }}"
+                                <img src="{{ secure_asset('storage/products/' . $product->product_image_url) }}"
                                     class="img-fluid w-100 rounded-top" alt="">
                             </div>
                             <div class="text-white bg-primary px-3 py-1 rounded position-absolute"
@@ -326,13 +326,13 @@
 
     <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('lib/lightbox/js/lightbox.min.js') }}"></script>
-    <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ secure_asset('lib/easing/easing.min.js') }}"></script>
+    <script src="{{ secure_asset('lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ secure_asset('lib/lightbox/js/lightbox.min.js') }}"></script>
+    <script src="{{ secure_asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <!-- Template Javascript -->
-    <script src="{{ asset('js/main.js') }}"></script>
-    <script src="{{ asset('js/product-details.js') }}"></script>
+    <script src="{{ secure_asset('js/main.js') }}"></script>
+    <script src="{{ secure_asset('js/product-details.js') }}"></script>
     <script>
         $(document).ready(function () {
             $('form').on('submit', function (e) {

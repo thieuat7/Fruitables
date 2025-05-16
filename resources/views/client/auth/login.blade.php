@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Login - laptopshop</title>
+    <title>Login - Fruitshop</title>
     <!-- MDB icon -->
     <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
     <!-- Font Awesome -->
@@ -14,7 +14,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
     <!-- MDB -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-login-form.min.css') }}" />
+    <link rel="stylesheet" href="{{ secure_asset('css/bootstrap-login-form.min.css') }}" />
 </head>
 
 <body>
@@ -126,7 +126,7 @@
     <!-- End your project here-->
 
     <!-- MDB -->
-    <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('js/mdb.min.js') }}"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
 </body>

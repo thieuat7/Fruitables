@@ -20,15 +20,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="{{ asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/style.css') }}" rel="stylesheet">
 
     <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -108,7 +108,7 @@
                     <div class="col-lg-5">
                         <div class="card mb-4">
                             <div class="card-body text-center">
-                                <img loading="lazy" src="{{ asset('storage/avatars/' . $user->user_avatar) }}"
+                                <img loading="lazy" src="{{ secure_asset('storage/avatars/' . $user->user_avatar) }}"
                                     alt="avatar" class="rounded-circle img-fluid"
                                     style="width: 150px; height: 150px; object-fit: cover;">
                                 <h5 class="my-3">{{ $user->user_name }}</h5>
@@ -150,7 +150,7 @@
                                     <div class="col-12 mt-3 text-center">
                                         @if($user->user_avatar)
                                         <img id="avatarPreview"
-                                            src="{{ asset('storage/avatars/' . $user->user_avatar) }}"
+                                            src="{{ secure_asset('storage/avatars/' . $user->user_avatar) }}"
                                             alt="Avatar Preview"
                                             style="display: block; max-width: 100%; max-height: 250px; border-radius: 8px; margin-top: 10px;">
                                         @endif
@@ -264,12 +264,13 @@
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('lib/lightbox/js/lightbox.min.js') }}"></script>
-    <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ secure_asset('lib/easing/easing.min.js') }}"></script>
+    <script src="{{ secure_asset('lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ secure_asset('lib/lightbox/js/lightbox.min.js') }}"></script>
+    <script src="{{ secure_asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+
     <!-- Template Javascript -->
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ secure_asset('js/main.js') }}"></script>
     <script>
     $(document).ready(function() {
         $('form').on('submit', function(e) {
