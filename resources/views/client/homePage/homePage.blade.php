@@ -8,31 +8,36 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="_csrf_header" content="X-CSRF-TOKEN">
 
-    <!-- Google Web Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<!-- jQuery Toast CSS & JS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet">
 
-<!-- Icon Fonts -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Font Awesome & Bootstrap Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-<!-- Libraries Stylesheet -->
-<link href="{{ secure_asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
-<link href="{{ secure_asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Bootstrap -->
-<link href="{{ secure_asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- jQuery Toast CSS (load trước JS Toast để tránh delay style) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
 
-<!-- Custom Template Style -->
-<link href="{{ secure_asset('css/style.css') }}" rel="stylesheet">
+    <!-- Library CSS -->
+    <link href="{{ secure_asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+
+    <!-- Bootstrap Core -->
+    <link href="{{ secure_asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom Template Style -->
+    <link href="{{ secure_asset('css/style.css') }}" rel="stylesheet">
+
 
     <style>
         .pagination {

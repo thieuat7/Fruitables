@@ -90,7 +90,7 @@
                             <p class="mb-4">{{ $product->product_detailDesc }}.</p>
 
                             
-                            <form class="add-to-cart-form" id="addToCartForm">
+                            <form class="add-to-cart-form" id="addToCartForm" >
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                                 {{-- <input type="hidden" name="quantity" value="1"> --}}
