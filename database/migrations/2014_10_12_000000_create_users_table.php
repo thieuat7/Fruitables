@@ -125,7 +125,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('product_id')->constrained('products');
-            $table->integer('rating')->checkBetween(1, 5);
+            $table->integer('rating')->check('rating BETWEEN 1 AND 5');
             $table->text('comment')->nullable();
             $table->timestamps();
         });
